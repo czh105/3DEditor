@@ -1,0 +1,108 @@
+.header{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 40px;
+    float: left;
+    text-align: left;
+    margin-left: auto;
+    z-index: 10; 
+    background-color: #868a8d;
+}
+.header .nav{
+    float: left;
+    width:100%;
+    height: 40px;
+    line-height: 50%;
+    text-align: left;
+    margin: auto;
+    position: relative;
+}
+ul{
+    list-style: none;
+}
+.header .nav li{
+    float: left;
+    width:7.5%;
+    height: 100%;
+    text-align: left;
+
+}
+.header .nav li a{
+    text-align: center;
+    height: 100%;
+    line-height: 100%;
+    color: #07121c;
+}
+.header .nav li .second-nav{
+    width: 150px;
+    float: left;
+    display: none;
+    margin-left: -40%;
+    position: relative;
+}
+.header .nav li .second-nav li{
+    position: relative;
+    width:100%;
+    height: 40px;
+    float: left;
+    padding-left: 10%;
+    line-height: 40px;
+    background-color: #868a8d;
+}
+.header .nav li .second-nav li a{
+    text-align: left;
+    
+}
+.header .nav li .second-nav li .third-nav{
+    width:150px;
+    height: 200px;
+    display: none;
+    float: left;
+    margin-left: 55%;
+    margin-top: -41.5%;
+}
+.right-panel{
+    width:15%;
+    height:95%;
+    background-color: #d2d4d5;
+    right:0px;
+    position: absolute;
+    padding-left: 0px;
+    top: 35px;
+    display:flex;
+    flex-direction:column;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+.right-panel .materials-textures-collection{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    border-top:5px solid gray;
+}
+.right-panel .materials-textures-collection .menu-list{
+    width:100%;
+    height:20px;
+    display:flex;
+    flex-direction:row;
+    text-align:center;
+    line-height:20px;
+}
+.right-panel .materials-textures-collection .menu-list .menu-material{
+    width:50%;
+    background-color:white;
+}
+.right-panel .materials-textures-collection .menu-list .menu-texture {
+    width: 50%;
+    background-color: darkgray;
+}
+.right-panel .materials-textures-collection .material-content{
+    width:100%;
+}
+.right-panel .materials-textures-collection .texture-content{
+    width:100%;
+    display:none;
+}
+
+

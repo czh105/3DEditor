@@ -31,19 +31,193 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
-    <Compile Include="routes\index.js" />
-    <Compile Include="routes\users.js" />
+    <Compile Include="public\javascripts\assets\ammo.js" />
+    <Compile Include="public\javascripts\assets\babylon.gui.js" />
+    <Compile Include="public\javascripts\assets\babylon.gui.min.js" />
+    <Compile Include="public\javascripts\assets\babylon.inspector.bundle.js" />
+    <Compile Include="public\javascripts\assets\babylon.js" />
+    <Compile Include="public\javascripts\assets\babylon.objFileLoader.js" />
+    <Compile Include="public\javascripts\assets\babylon.stlFileLoader.js" />
+    <Compile Include="public\javascripts\assets\babylon.stlFileLoader.min.js" />
+    <Compile Include="public\javascripts\assets\babylonjs.loaders.js" />
+    <Compile Include="public\javascripts\assets\babylonjs.loaders.min.js" />
+    <Compile Include="public\javascripts\assets\babylonjs.materials.min.js" />
+    <Compile Include="public\javascripts\assets\babylonjs.postProcess.min.js" />
+    <Compile Include="public\javascripts\assets\babylonjs.proceduralTextures.min.js" />
+    <Compile Include="public\javascripts\assets\babylonjs.serializers.min.js" />
+    <Compile Include="public\javascripts\assets\bootstrap-colorpicker.js" />
+    <Compile Include="public\javascripts\assets\bootstrap.min.js" />
+    <Compile Include="public\javascripts\assets\cannon.js" />
+    <Compile Include="public\javascripts\assets\chart-data.js" />
+    <Compile Include="public\javascripts\assets\chart.min.js" />
+    <Compile Include="public\javascripts\assets\colorpicker.js" />
+    <Compile Include="public\javascripts\assets\dat.gui.min.js" />
+    <Compile Include="public\javascripts\assets\earcut.min.js" />
+    <Compile Include="public\javascripts\assets\easypiechart-data.js" />
+    <Compile Include="public\javascripts\assets\easypiechart.js" />
+    <Compile Include="public\javascripts\assets\gltf_validator.js" />
+    <Compile Include="public\javascripts\assets\jquery-1.10.2.js" />
+    <Compile Include="public\javascripts\assets\jquery-ui.js" />
+    <Compile Include="public\javascripts\assets\jquery.chart.js" />
+    <Compile Include="public\javascripts\assets\jquery.chart.min.js" />
+    <Compile Include="public\javascripts\assets\jquery.cookie.js" />
+    <Compile Include="public\javascripts\assets\jquery.metisMenu.js" />
+    <Compile Include="public\javascripts\assets\jquery.min.js" />
+    <Compile Include="public\javascripts\assets\jquery.mobile-1.4.5.min.js" />
+    <Compile Include="public\javascripts\assets\materialize.js" />
+    <Compile Include="public\javascripts\assets\materialize.min.js" />
+    <Compile Include="public\javascripts\assets\morris.js" />
+    <Compile Include="public\javascripts\assets\Oimo.js" />
+    <Compile Include="public\javascripts\assets\pep.min.js" />
+    <Compile Include="public\javascripts\assets\raphael-2.1.0.min.js" />
+    <Compile Include="public\javascripts\users\controls\control.js" />
+    <Compile Include="public\javascripts\users\controls\file.js" />
+    <Compile Include="public\javascripts\users\controls\keyEvent.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\users\controls\material.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\users\controls\mesh.js" />
+    <Compile Include="public\javascripts\users\controls\mouseEvent.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\users\controls\nav.js" />
+    <Compile Include="public\javascripts\users\controls\scene.js" />
+    <Compile Include="public\javascripts\users\controls\second_scene.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\users\controls\texture.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\users\controls\trangle.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\users\views\materialView.js" />
+    <Compile Include="public\javascripts\users\views\meshView.js" />
+    <Compile Include="public\javascripts\users\views\mouseView.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\javascripts\users\views\textureView.js" />
+    <Compile Include="public\javascripts\users\views\triangleView.js" />
+    <Compile Include="routes\connectDb.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\file.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\credentials.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\login.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\zipFile.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Content Include="libman.json" />
     <Content Include="package.json" />
+    <Content Include="public\fonts\fontawesome-webfontba72.eot" />
+    <Content Include="public\fonts\fontawesome-webfontba72.svg" />
+    <Content Include="public\fonts\fontawesome-webfontba72.ttf" />
+    <Content Include="public\fonts\fontawesome-webfontba72.woff" />
+    <Content Include="public\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="public\images\picture\bg.jpg" />
+    <Content Include="public\images\picture\name.png" />
+    <Content Include="public\images\picture\password.png" />
+    <Content Include="public\pages\editor.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\error.html" />
+    <Content Include="public\pages\header.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\home.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\index.pug" />
+    <Content Include="public\pages\layout.html" />
+    <Content Include="public\pages\login.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\system\geometrics.html" />
+    <Content Include="public\pages\system\figure.html" />
+    <Content Include="public\pages\system\buildings.html" />
+    <Content Include="public\pages\system\plants.html" />
+    <Content Include="public\pages\system\others.html" />
+    <Content Include="public\pages\system\cars.html" />
+    <Content Include="public\pages\system\animal.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\register.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\stylesheets\bootstrap-colorpicker.min.css" />
+    <Content Include="public\stylesheets\bootstrap-theme.min.css" />
+    <Content Include="public\stylesheets\bootstrap.css" />
+    <Content Include="public\stylesheets\bootstrap.min.css" />
+    <Content Include="public\stylesheets\colorpicker.css" />
+    <Content Include="public\stylesheets\cssCharts.css" />
+    <Content Include="public\stylesheets\custom-styles.css" />
+    <Content Include="public\stylesheets\debug.css" />
+    <Content Include="public\stylesheets\dialog.css" />
+    <Content Include="public\stylesheets\font-awesome.css" />
+    <Content Include="public\stylesheets\index.css" />
+    <Content Include="public\stylesheets\jquery-ui.css" />
+    <Content Include="public\stylesheets\jquery-ui.min.css" />
+    <Content Include="public\stylesheets\login.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\stylesheets\main.css" />
+    <Content Include="public\stylesheets\material-panel.css" />
+    <Content Include="public\stylesheets\materialize.css" />
+    <Content Include="public\stylesheets\materialize.min.css" />
+    <Content Include="public\stylesheets\mesh-box.css" />
+    <Content Include="public\stylesheets\morris-0.4.3.min.css" />
+    <Content Include="public\stylesheets\nav.css" />
+    <Content Include="public\stylesheets\newland.css" />
+    <Content Include="public\stylesheets\panel.css" />
+    <Content Include="public\stylesheets\reset.css" />
+    <Content Include="public\stylesheets\style.css" />
+    <Content Include="public\stylesheets\texture-panel.css" />
+    <Content Include="public\stylesheets\wall-panel.css" />
+    <Content Include="public\system\images\animal1.jpg" />
+    <Content Include="public\system\images\car0.jpg" />
+    <Content Include="public\system\images\car1.jpg" />
+    <Content Include="public\system\images\car2.jpg" />
+    <Content Include="public\system\images\figure.jpg" />
+    <Content Include="public\system\images\figure1.jpg" />
     <Content Include="README.md" />
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
+    <Content Include="views\systemScences.ejs">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />
     <Folder Include="public\images\" />
+    <Folder Include="public\images\picture\" />
+    <Folder Include="public\images\users\" />
+    <Folder Include="public\images\system\" />
     <Folder Include="public\javascripts\" />
+    <Folder Include="public\javascripts\assets\" />
+    <Folder Include="public\javascripts\users\" />
+    <Folder Include="public\fonts\" />
+    <Folder Include="public\javascripts\users\controls\" />
+    <Folder Include="public\javascripts\users\views\" />
+    <Folder Include="public\pages\system\" />
+    <Folder Include="public\system\" />
+    <Folder Include="public\system\images\" />
+    <Folder Include="public\system\scenes\maps\" />
+    <Folder Include="public\system\textures\" />
+    <Folder Include="public\system\scenes\" />
+    <Folder Include="public\users\" />
+    <Folder Include="public\pages\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />

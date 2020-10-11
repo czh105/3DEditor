@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <meta charset="utf-8" />
+
+    <title>系统图库</title>
+    <style>
+        .system-div {
+            border-style: inset;
+            border-color: inherit;
+            border-width: 2px;
+            height: 354px;
+            width: 560px;
+            padding-top: 0px;
+            background-color: aliceblue;
+        }
+
+            .system-div .scence-div {
+                height: 350px;
+                width: 50px;
+                padding-top: 0px;
+                float: left;
+            }
+
+                .system-div .scence-div .scences-kinds {
+                    padding: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 2px inset;
+                    text-align: center;
+                    margin-top: 0px;
+                    border-bottom: none;
+                }
+
+                    .system-div .scence-div .scences-kinds li:nth-of-type(odd) {
+                        padding-top: 5px;
+                        list-style: none;
+                        background-color: darkgray;
+                        width: 100%;
+                        height: 40px;
+                    }
+
+                    .system-div .scence-div .scences-kinds li:nth-of-type(even) {
+                        padding-top: 5px;
+                        list-style: none;
+                        background-color: burlywood;
+                        width: 100%;
+                        height: 40px;
+                    }
+
+            .system-div .images-div {
+                height: 350px;
+                width: 500px;
+                float: left;
+                margin-left: 5px;
+                overflow-y: scroll;
+            }
+
+                .system-div .images-div img {
+                    width: 45px;
+                    height: 45px;
+                }
+    </style>
+    <script src="/javascripts/assets/jquery-1.10.2.js"></script>
+    <script src="/javascripts/assets/jquery.cookie.js"></script>
+</head>
+<body>
+    <div class="system-div">
+        <div class="scence-div">
+            <ul class="scences-kinds" id="scences_kinds">
+                <li>几何</li>
+                <li>车子</li>
+                <li>人物</li>
+                <li>房子</li>
+                <li>树木</li>
+                <li>枪械</li>
+                <li>机械</li>
+            </ul>
+        </div>
+        <div class="images-div">
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            console.log(Request.cookies);
+        });
+    </script>
+</body>
+</html>

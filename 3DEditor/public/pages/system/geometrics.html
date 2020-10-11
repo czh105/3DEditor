@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>3DEdit</title>
+    <!---->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../../stylesheets/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="../../stylesheets/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../../stylesheets/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="../../stylesheets/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../../stylesheets/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' />
+    <link href="../../stylesheets/cssCharts.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="#"><i class="large material-icons"></i> <strong>3DEditor</strong></a>
+
+                <div id="sideNav"><i class="material-icons dp48"></i></div>
+            </div>
+        </nav>
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a class="waves-dark" href="animal.html"><i class="fa fa-dashboard"></i>动物</a>
+                    </li>
+                    <li>
+                        <a href="figure.html" class="waves-effect waves-dark"><i class="fa fa-desktop"></i>人物</a>
+                    </li>
+                    <li>
+                        <a href="geometrics.html" class="active-menu waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i>几何</a>
+                    </li>
+                    <li>
+                        <a href="buildings.html" class=" waves-effect waves-dark"><i class="fa fa-qrcode"></i>建筑</a>
+                    </li>
+
+                    <li>
+                        <a href="cars.html" class="waves-effect waves-dark"><i class="fa fa-table"></i>汽车</a>
+                    </li>
+                    <li>
+                        <a href="plants.html" class="waves-effect waves-dark"><i class="fa fa-edit"></i>植物</a>
+                    </li>                   
+                    <li>
+                        <a href="others.html" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i>其他</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="header">
+                <h1 class="page-header">几何模型</h1>
+                <div id="page-inner" style="float:left;">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="card-action">
+                                Area Chart
+                            </div>
+                            <div class="card-content">
+                                <div id="morris-area-chart">
+                                    <canvas style="height:200px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% for(var index = 0; index < meshes.length; index++){ %>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="card-action">
+                                <%= meshes[index].name %>
+                            </div>
+                            <div class="card-content">
+                                <div><canvas style="height:200px" id="<%= meshes[index].name %>"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../javascripts/assets/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="../javascripts/assets/bootstrap.min.js"></script>
+
+    <script src="../javascripts/assets/materialize.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="../javascripts/assets/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="../javascripts/assets/raphael-2.1.0.min.js"></script>
+    <script src="../javascripts/assets/morris.js"></script>
+
+
+    <script src="../javascripts/assets/easypiechart.js"></script>
+    <script src="../javascripts/assets/easypiechart-data.js"></script>
+
+    <script src="../javascripts/assets/jquery.chart.js"></script>
+    <script src="../javascripts/assets/jquery.cookie.js"></script>
+    <!--<script src="../javascripts/assets/custom-scripts.js"></script>-->
+</body>
+</html>

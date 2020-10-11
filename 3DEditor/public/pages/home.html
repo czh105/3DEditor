@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>3d模型转换为babylon文件</title>
+    <script src="../javascripts/assets/ammo.js"></script>
+    <script src="../javascripts/assets/babylon.gui.js"></script>
+    <script src="../javascripts/assets/babylon.gui.min.js"></script>
+    <script src="../javascripts/assets/babylon.inspector.bundle.js"></script>
+    <script src="../javascripts/assets/babylon.js"></script>
+    <script src="../javascripts/assets/babylonjs.materials.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.postProcess.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.proceduralTextures.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.serializers.min.js"></script>
+    <script src="../javascripts/assets/cannon.js"></script>
+    <script src="../javascripts/assets/dat.gui.min.js"></script>
+    <script src="../javascripts/assets/earcut.min.js"></script>
+    <script src="../javascripts/assets/gltf_validator.js"></script>
+    <script src="../javascripts/assets/jquery.min.js"></script>
+    <script src="../javascripts/assets/jquery.cookie.js"></script>
+    <script src="../javascripts/assets/Oimo.js"></script>
+    <script src="../javascripts/assets/pep.min.js"></script>
+    <script src="../javascripts/assets/bootstrap.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.loaders.js"></script>
+    <script src="../javascripts/assets/babylonjs.loaders.min.js"></script>
+    <script src="../javascripts/assets/babylon.objFileLoader.js"></script>
+    <script src="../javascripts/assets/babylon.stlFileLoader.js"></script>
+</head>
+<body>
+    <input type="file" name="" id="mtl" onchange="fileLoader()" />
+    <canvas id="canvas" style="width: 800px; height: 800px"></canvas>
+    <div>
+        <button onclick="downMesh()">下载mesh</button>
+    </div>
+    <script>
+        var canvas = document.getElementById("canvas"); 
+        var engine = new BABYLON.Engine(canvas,true);
+        var loader = new BABYLON.OBJFileLoader();
+        var path = '../system/';
+        var file_name = 'chair.STL';
+        var object_url = "c:/";
+        var meshes = [];
+        var createScene = function(){
+            var scene = new BABYLON.Scene(engine);
+            // 创建一个相机，设置其位置为(x:0, y:5, z:-10)
+		    var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 1000,-10), scene);
+		      
+            scene.createDefaultCameraOrLight(true,true,true);
+		    // 相机聚焦在场景原点位�?
+		    camera.setTarget(BABYLON.Vector3.Zero());
+		 
+		    // 使得我们可以控制相机拍摄角度，和three.js中的OrbitsControl效果类似，但简单得�?
+		    camera.attachControl(canvas, true);
+
+
+            // 创建一个内置的“球”体；其构造函数的参数：名称、宽度、深度、精度，场景，其中精度表示表面细分数�?
+		    var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene);
+		    // 设置球体位置，使其位于平面之�?
+		    sphere.position.y = 1;
+            return scene;
+        };
+        var scene = createScene();
+        engine.runRenderLoop(function(){
+	        if(scene){
+		        scene.render();
+	        }
+	        scene.render();
+        });
+        window.addEventListener("resize",function(){
+            engine.resize();
+        });
+        function downMesh(){
+            let filename = "chair.babylon";
+            if(object_url){
+                window.URL.revokeObjectURL(object_url);
+            }
+            var mesh = new BABYLON.SceneSerializer.SerializeMesh(scene.meshes);
+            var str_mesh = JSON.stringify(mesh);
+            var blob = new Blob([str_mesh],{type:"octet/stream"});
+            object_url = (window.webkitURL || window.URL).createObjectURL(blob);
+            var link = window.document.createElement('a');
+            link.href = object_url;
+            link.download = filename;
+            var click = document.createEvent("MouseEvents");
+            click.initEvent("click", true, false);
+            link.dispatchEvent(click);
+        }
+        var allbase_mesh = new BABYLON.Mesh("allbase",scene);
+    </script>
+    <script type="text/javascript">
+    	function fileLoader(){
+    		var file = document.getElementById('mtl').files[0];
+    		var file_reader = new FileReader();
+    		file_reader.readAsText(file);
+    		file_reader.onload = function(){
+    			var data = file_reader.result.toString();
+                var loader = new BABYLON.OBJFileLoader();
+                //console.log(loader.canDirectLoad(data));
+                var new_scene = new BABYLON.Scene(engine);
+                loader._parseSolid("", new_scene, data, "").then(function (meshes) {
+                    //console.log(meshes);
+                    /*return {
+                        meshes: meshes,
+                        particleSystems: [],
+                        skeletons: [],
+                        animationGroups: []
+                    };*/
+
+                    meshes.forEach(function(mesh){
+                        scene.addMesh(mesh);
+                    });
+
+                    //var mesh = BABYLON.Mesh.MergeMeshes(meshes,true,true,allbase_mesh,true,true);
+                    //allbase_mesh.subMeshes = meshes;
+                    //scene.addMesh(mesh);
+                    //allbase_mesh.scaling = new BABYLON.Vector3(0.01,0.01,0.01);
+                    var mesh = BABYLON.Mesh.MergeMeshes(meshes, true, true, undefined, false, true);
+                    scene.addMesh(mesh);
+                });
+
+
+    		}
+    	}
+    </script>
+</body>
+</html>

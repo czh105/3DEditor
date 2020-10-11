@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>3DEdit</title>
+	<!---->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" href="../stylesheets/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="../stylesheets/jquery-ui.min.css" />
+    <link rel="stylesheet" href="../stylesheets/jquery-ui.css" />
+	<!-- Bootstrap Styles-->
+	<link href="../stylesheets/bootstrap.css" rel="stylesheet" />
+	<!-- FontAwesome Styles-->
+	<link href="../stylesheets/font-awesome.css" rel="stylesheet" />
+	<!-- Morris Chart Styles-->
+	<link href="../stylesheets/morris-0.4.3.min.css" rel="stylesheet" />
+	<!-- Custom Styles-->
+	<link href="../stylesheets/custom-styles.css" rel="stylesheet" />
+	<!-- Google Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' />
+	<link href="../stylesheets/cssCharts.css" rel="stylesheet" />
+	<script src="../javascripts/assets/jquery-1.10.2.js"></script>
+    <script src="../javascripts/assets/jquery-ui.js"></script>
+    <script src="../javascripts/assets/jquery.cookie.js"></script>
+     <!-- Bootstrap Js -->
+    <script src="../javascripts/assets/bootstrap.min.js"></script>
+
+    <script src="../javascripts/assets/materialize.min.js"></script>
+    
+    <script src="../javascripts/assets/jquery.metisMenu.js"></script>
+    
+    <script src="../javascripts/assets/raphael-2.1.0.min.js"></script>
+    <script src="../javascripts/assets/morris.js"></script>
+
+    <script src="../javascripts/assets/jquery.chart.js"></script>
+    <script src="../javascripts/assets/jquery.cookie.js"></script>
+    <script src="../javascripts/assets/ammo.js"></script>
+    <script src="../javascripts/assets/babylon.gui.js"></script>
+    <script src="../javascripts/assets/babylon.gui.min.js"></script>
+    <script src="../javascripts/assets/babylon.inspector.bundle.js"></script>
+    <script src="../javascripts/assets/babylon.js"></script>
+    <script src="../javascripts/assets/babylonjs.materials.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.postProcess.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.proceduralTextures.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.serializers.min.js"></script>
+    <script src="../javascripts/assets/cannon.js"></script>
+    <script src="../javascripts/assets/dat.gui.min.js"></script>
+    <script src="../javascripts/assets/earcut.min.js"></script>
+    <script src="../javascripts/assets/gltf_validator.js"></script>
+    <script src="../javascripts/assets/jquery.min.js"></script>
+    <script src="../javascripts/assets/jquery.cookie.js"></script>
+    <script src="../javascripts/assets/jquery-ui.js"></script>
+    <script src="../javascripts/assets/Oimo.js"></script>
+    <script src="../javascripts/assets/pep.min.js"></script>
+    <script src="../javascripts/assets/bootstrap.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.loaders.js"></script>
+    <script src="../javascripts/assets/babylonjs.loaders.min.js"></script>
+    <script src="../javascripts/assets/babylon.objFileLoader.js"></script>
+    <!--<script src="../javascripts/assets/custom-scripts.js"></script>-->
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">insert_chart</i> <strong>3DEditor</strong></a>
+
+                <div id="sideNav"><i class="material-icons dp48">toc</i></div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!--<li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>-->
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b id="userid"><%= userid %></b> <i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+        <!----------------------------我的------------------------------------------------>
+        <ul id="dropdown1" class="dropdown-content">
+            <li>
+                <a href="#"><i class="fa fa-user fa-fw"></i>我的配置文件</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-gear fa-fw"></i>设置</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-sign-out fa-fw"></i>退出登录</a>
+            </li>
+        </ul>
+        <!----------------------警告--------------------------------->
+        <ul id="dropdown2" class="dropdown-content w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-comment fa-fw"></i>
+                        消息1<span class="pull-right text-muted small">时间</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-twitter fa-fw"></i> 消息2
+                        <span class="pull-right text-muted small">12 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-envelope fa-fw"></i> 消息3
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-tasks fa-fw"></i>  消息4
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-upload fa-fw"></i>  消息5
+                        <span class="pull-right text-muted small">4 min</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>所有警告消息</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-------------------------进度------------------------------------------->
+        <ul id="dropdown3" class="dropdown-content dropdown-tasks w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 1</strong>
+                            <span class="pull-right text-muted">60% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 2</strong>
+                            <span class="pull-right text-muted">28% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
+                                <span class="sr-only">28% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 3</strong>
+                            <span class="pull-right text-muted">60% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (warning)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 4</strong>
+                            <span class="pull-right text-muted">85% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                <span class="sr-only">85% Complete (danger)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+        </ul>
+        <!-------------------------------消息------------------------------------------>
+        <ul id="dropdown4" class="dropdown-content dropdown-tasks w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>John Doe</strong>
+                        <span class="pull-right text-muted">
+                            <em>Today</em>
+                        </span>
+                    </div>
+                    <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>John Smith</strong>
+                        <span class="pull-right text-muted">
+                            <em>Yesterday</em>
+                        </span>
+                    </div>
+                    <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>John Smith</strong>
+                        <span class="pull-right text-muted">
+                            <em>Yesterday</em>
+                        </span>
+                    </div>
+                    <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>Read All Messages</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a class="waves-effect waves-dark" onclick="userMeshes()"><i class="fa fa-dashboard"></i>模型</a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-dark" onclick="userPictures()"><i class="fa fa-desktop"></i>图片</a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-dark" onclick="userOthers()"><i class="fa fa-bar-chart-o"></i>其他</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="header">
+                <h1 class="page-header">模型</h1>
+                <div id="page-inner" style="float:left;">
+                    <div id="scences_show">
+                        <% for(var i = 0; i < meshes.length; i++){%>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="card-action" id="<%= meshes[i].name %>"><i class="material-icons right">close</i></div>
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <canvas style="height:200px" id="canvas<%= meshes[i].name %>"></canvas>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4"><%= meshes[i].name %><i class="material-icons right">mode_edit</i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <div style="height:200px;font-size:50px;text-align:center;margin-top:20%;" id="add_scence">+</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="create_scence_dialog" title="创建模型">
+        <label>项目名称：</label><input id="scene_name" type="text" value="newscene" onkeyup="value=value.replace(/[/W]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^/d]/g,''))" />
+        <input type="submit" value="创建" onclick="createNewScene()" />
+        <input type="button" value="取消" onclick="closeSceneDialog()" />
+    </div>
+    <a href="./users/12345678900/tree/textures">下载</a>
+   
+</body>
+</html>
+<script>
+    //实现canvas点击编辑进入
+    //1、实现canvas、纹理(图片)的删除功能
+    //1.1 实现canvas删除功能
+    $("div.card-action").click(function () {
+        if($("#scences_show").css("display") != 'none'){
+            var canva_div = $(this).parentsUntil("#scences_show");
+            var file_name = this.id;
+            console.log(file_name);
+            $.ajax({
+                type: 'post',
+                url: 'http://127.0.0.1:8080/delUserScence',
+                data: { userid: '<%= userid %>', filename: file_name },
+                success: function (data) {
+                    console.log("客户端删除成功");
+                    canva_div.remove();
+                },
+                error: function (err) {
+                    console.log("err:" + err);
+                }
+
+            });
+        }   
+    });
+    //实现项目编辑功能
+    $("i.material-icons.right").click(function () {   
+        if ($("#scences_show").css("display") != 'none') {
+            let scence_text = $(this).parent().text();
+            let option = scence_text.lastIndexOf('close');
+            if (option >= 0) {
+                console.log("删除操作");
+            }
+            else {
+                let scence_name = scence_text.substring(0, scence_text.length - 9);
+                $.cookie("userid","<%= userid %>",{expires:1});
+                $.cookie("projectname",scence_name,{expires:1});
+                $.cookie("options",'old_project');
+                window.location.href = "./pages/editor.html";
+            }
+        }
+    });
+    //进入到新的编辑界面
+    $("#add_scence").click(function () {
+        //子网页
+        console.log("进入");
+        $("#create_scence_dialog").dialog();
+       
+    });
+    //创建新的场景项目
+    function createNewScene(){
+        let scene_name = $("#scene_name").val();  
+        console.log(scene_name);
+        if(scene_name){
+            //创建项目文件夹
+            $("#create_scence_dialog").dialog('close');
+            let data = {userid:"<%= userid %>",scenename:scene_name};
+            $.ajax({
+                type:'post',
+                url:'http://127.0.0.1:8080/createProjectFolder',
+                data:data,
+                success:function(data){   
+                    $.cookie("userid","<%= userid %>",{expires:1});
+                    $.cookie("projectname",scene_name,{expires:1});
+                    $.cookie("options",'new');
+                    window.location.href = './pages/editor.html';
+                },
+                error: function(err){
+                    //window.alter("错误！");
+                    console.log(err);
+                }
+            });
+        }else{
+            console.log("场景名称不符合规则！"+err);
+        }
+    }
+    function closeSceneDialog(){
+        $("#create_scence_dialog").dialog('close');
+    }
+    //将所有模型展示出来
+    function userMeshes() {
+        $(".page-header").text("模型");
+        if ($("#scences_show").is(":hidden")) {  
+            $("#scences_show").show();
+        }
+    }
+    /*function userPictures() {
+        $(".page-header").text("纹理");
+        if ($("#texture_show").is(":hidden")) {
+            $("#scences_show").hide();
+            $("#texture_show").show();
+        }
+    }*/
+    function loadScence() {
+        var canvas_list = document.getElementsByTagName('canvas');
+        for (var i = 0; i < canvas_list.length ; i++) {
+            
+            var file_name = canvas_list[i].id.substring(6);
+            var user_id = "<%= userid %>";
+            //var path = "../users/"+user_id+"/"+file_name+"/scenes/";
+            var path = "../users/"+user_id+"/"+file_name+"/";
+            file_name += ".babylon";
+            //创建场景
+            createSceneLoaderFile(canvas_list[i],path,file_name);
+        }
+    }
+    //加载图片
+    /*function loadTexture() {
+        var imgList = $("img");
+        imgList.forEach(function(img){
+
+        });
+    }*/
+    function userOthers() {
+        console.log(document.cookie);
+    }
+    function createSceneLoaderFile(el,path,file_name){
+        console.log("jion");
+        var scene;
+        var engine = new BABYLON.Engine(el,true);
+        console.log(el.id);
+        var createScene = function(){
+            scene = new BABYLON.Scene(engine);
+            scene.collisionsEnabled = true;
+   
+            scene.clearColor = new BABYLON.Color3(0.45, 0.45, 0.5);
+            //点光源    
+            light = new BABYLON.PointLight("Hemi0", new BABYLON.Vector3(-600, 600, -800), scene);
+            light.diffuse = new BABYLON.Color3(1,1,1);//这道“颜色”是从上向下的，底部收到100%，侧方收到50%，顶部没有
+            light.specular = new BABYLON.Color3(0,0,0);
+            light.groundColor = new BABYLON.Color3(1,1,1);//这个与第一道正相反
+            //light =  new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 0.5, 0), scene);
+            //light.intensity = 0.7;
+            projector_plane = new BABYLON.Plane(0,1,0,5);//新建投影面
+            //旋转相机
+            camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI/4, 1300, new BABYLON.Vector3.Zero(), scene);
+            camera_additional = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 4, 1300, new BABYLON.Vector3.Zero(), scene);
+            
+            camera.checkCollisions = true;
+            camera.lowerBetaLimit = 0;
+            camera.upperBetaLimit = Math.PI / 2;
+            scene.activeCamera = camera;
+            // BABYLON.SceneLoader.Append(path,file_name,scene,function(newscene){
+            //     //scene.createDefaultCameraOrLight(true, true, true);
+            //     //scene.activeCamera = newscene.cameras[0];
+            // });
+            BABYLON.SceneLoader.ImportMesh("",path,file_name,scene,function(newMeshes,partSystem,skons){
+                scene.createDefaultCameraOrLight(true, true, true);
+            });
+            console.log(scene.meshes);
+            return scene;
+        }
+        scene = createScene();
+        BABYLON.SceneLoader.ShowLoadingScreen = true;
+        engine.runRenderLoop(function(){
+            scene.render();
+        });
+    }
+    //页面加载完成
+    window.onload = function(){
+        console.log("页面加载完成");
+　　　　loadScence();
+　　} 
+</script>
+<script>
+    
+</script>

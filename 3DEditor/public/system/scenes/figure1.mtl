@@ -1,0 +1,152 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# 创建的文件:17.03.2020 12:37:14
+
+newmtl Mat3d66_591855_2_817
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-3.jpg
+	map_Kd maps\3d66Model-591855-files-3.jpg
+	map_bump  maps\3d66Model-591855-files-4.jpg
+
+newmtl Mat3d66_591855_3_884
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-1.jpg
+	map_Kd maps\3d66Model-591855-files-1.jpg
+	map_bump  maps\3d66Model-591855-files-2.jpg
+
+newmtl Mat3d66_591855_4_806
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-1.jpg
+	map_Kd maps\3d66Model-591855-files-1.jpg
+	map_bump  maps\3d66Model-591855-files-2.jpg
+
+newmtl Mat3d66_591855_5_194
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-3.jpg
+	map_Kd maps\3d66Model-591855-files-3.jpg
+	map_bump  maps\3d66Model-591855-files-4.jpg
+
+newmtl Mat3d66_591855_6_917
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-1.jpg
+	map_Kd maps\3d66Model-591855-files-1.jpg
+	map_bump  maps\3d66Model-591855-files-2.jpg
+
+newmtl Mat3d66_591855_7_6
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-7.jpg
+	map_Kd maps\3d66Model-591855-files-7.jpg
+	map_bump  maps\3d66Model-591855-files-8.jpg
+
+newmtl Mat3d66_591855_8_292
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-5.jpg
+	map_Kd maps\3d66Model-591855-files-5.jpg
+	map_bump  maps\3d66Model-591855-files-6.jpg
+
+newmtl Mat3d66_591855_9_522
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-1.jpg
+	map_Kd maps\3d66Model-591855-files-1.jpg
+	map_bump  maps\3d66Model-591855-files-2.jpg
+
+newmtl Mat3d66_591855_10_619
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-3.jpg
+	map_Kd maps\3d66Model-591855-files-3.jpg
+	map_bump  maps\3d66Model-591855-files-4.jpg
+
+newmtl Mat3d66_591855_11_536
+	Ns 30.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5500 0.5500 0.5500
+	Kd 0.5500 0.5500 0.5500
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka maps\3d66Model-591855-files-9.jpg
+	map_Kd maps\3d66Model-591855-files-9.jpg
+	map_bump maps\3d66Model-591855-files-10.jpg

@@ -1,0 +1,38 @@
+.panel{
+    top:40px;
+    border: 1px solid #669966;
+    float: right;
+    left:80%;
+    position: fixed;
+    z-index: 9;
+    width: 20%;
+    height: 95%;
+    border: 2px ridge #05192e;
+}
+.panel .panel-title{
+    text-align: center;
+    font-size: 2em;
+    color: #D9D9D9;
+    border-bottom: 2px solid #D9D9D9;
+    background-color: white;
+    height: 7.5%;
+}
+.panel .panel-show{
+    height: 92.5%;
+}
+.wall-shape-panel{
+    position: relative;
+    width: 80%;
+    text-align: left;
+    border-bottom-color: #669966;
+    margin-left: 10px;
+    margin-top: -20px;
+}
+.wall-shape-panel input{
+     margin-left:0px;
+}
+.wall-shape-panel span{
+    margin-left: 30%;
+    text-align: center;
+    margin-top:0px;
+}

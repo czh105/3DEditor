@@ -1,0 +1,677 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3D建模</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/nav.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/panel.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap-colorpicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/material-panel.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/mesh-box.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/texture-panel.css" />
+    <link rel="stylesheet" href="../stylesheets/jquery-ui.min.css" />
+    <link rel="stylesheet" href="../stylesheets/jquery-ui.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="../javascripts/assets/ammo.js"></script>
+    <script src="../javascripts/assets/babylon.gui.js"></script>
+    <script src="../javascripts/assets/babylon.gui.min.js"></script>
+    <script src="../javascripts/assets/babylon.inspector.bundle.js"></script>
+    <script src="../javascripts/assets/babylon.js"></script>
+    <script src="../javascripts/assets/babylonjs.materials.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.postProcess.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.proceduralTextures.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.serializers.min.js"></script>
+    <script src="../javascripts/assets/cannon.js"></script>
+    <script src="../javascripts/assets/dat.gui.min.js"></script>
+    <script src="../javascripts/assets/earcut.min.js"></script>
+    <script src="../javascripts/assets/gltf_validator.js"></script>
+    <script src="../javascripts/assets/jquery.min.js"></script>
+    <script src="../javascripts/assets/jquery.cookie.js"></script>
+    <script src="../javascripts/assets/jquery-ui.js"></script>
+    <script src="../javascripts/assets/Oimo.js"></script>
+    <script src="../javascripts/assets/pep.min.js"></script>
+    <script src="../javascripts/assets/bootstrap.min.js"></script>
+    <script src="../javascripts/assets/babylonjs.loaders.js"></script>
+    <script src="../javascripts/assets/babylonjs.loaders.min.js"></script>
+    <script src="../javascripts/assets/babylon.objFileLoader.js"></script>
+    <script src="../javascripts/assets/babylon.stlFileLoader.js"></script>
+    <script src="../javascripts/assets/colorpicker.js"></script>
+    <script src="../javascripts/assets/bootstrap.min.js"></script>
+    <script src="../javascripts/assets/bootstrap-colorpicker.js"></script>
+    <script src="../javascripts/users/controls/nav.js"></script>
+    <script src="../javascripts/users/controls/material.js"></script>
+    <style type="text/css">
+        html, body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!--导航条-->
+    <div class="header">
+        <ul class="nav">
+            <li>
+                <a>文件</a>
+                <ul class="second-nav">
+                    <li>
+                        <a>导入模型</a>
+                        <ul class="third-nav">
+                            <li onclick="OpenBabylonFile()">babylon模型</li>
+                            <li onclick="OpenObjAndStlFile()">obj模型</li>
+                            <li onclick="OpenObjAndStlFile()">stl模型</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a>导出</a>
+                        <ul class="third-nav">
+                            <li onclick="exportStlSceneFile()">导出stl模型</li>
+                            <li onclick="exportObjSceneFile()">导出obj模型</li>
+                            <li onclick="saveSceneFile()">导出保存场景</li>
+                        </ul>
+                    </li>
+                    <!-- <li><a onclick="Screenshot()">截图</a></li> -->
+                    <li><a>退出</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>图形</a>
+                <ul class="second-nav">
+                    <li>
+                        <a>线</a>
+                        <ul class="third-nav">
+                            <li onclick="createLineMesh()">实线</li>
+                           <!--  <li onclick="createDashedLinesMesh()">虚线</li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a>立方体</a>
+                        <ul class="third-nav">
+                            <li onclick="createBoxMesh()">长方体</li>
+                            <li onclick="createExtrudePolygonMesh()">多边体</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>柱体</a>
+                        <ul class="third-nav">
+                            <li onclick="createCylinderMesh()">圆柱体</li>
+                            <li onclick="createTubeMesh()">管状体</li>
+                            <li onclick="createConeMesh()">圆锥体</li>
+                        </ul>
+                    </li>
+                    <li onclick="createSphereMesh()">球体</li>
+                    <li>
+                        <a>环状</a>
+                        <ul class="third-nav">
+                            <li onclick="createTorusKnotMesh()">环形结</li>
+                            <li onclick="createTorusMesh()">环形面</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>平面</a>
+                        <ul class="third-nav">
+                            <li onclick="createPlaneMesh()">平面</li>
+                            <li onclick="createGroundMesh()">地面</li>
+                        </ul>
+                    </li>
+                    <li onclick="showAndCloseMeshDialog()">模型库</li>
+                    <!-- <li>
+                        <a>其他</a>
+                        <ul class="third-nav">
+                            <li onclick="createExtrudeShapeMesh()">形状</li>
+                            <li onclick="createExtrudeShapeCustom()">自定义</li>
+                            <li onclick="createDecalMesh()">贴花</li>
+                            
+                        </ul>
+                    </li> -->
+                </ul>
+            </li>
+            <li>
+                <a>材质</a>
+                <ul class="second-nav">
+                    <li>
+                        <a>材质</a>
+                        <ul class="third-nav">
+                            <li onclick="closeMaterialPanel()">创建材质</li>
+                            <li onclick="displayMaterialCollection()">材质库</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>纹理</a>
+                        <ul class="third-nav">
+                            <li onclick="showAndCloseTexturePanel()">创建纹理</li>
+                            <li onclick="displayTextureCollection()">纹理库</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <a>选择</a>
+                <ul class="second-nav">
+                    <li onclick="setSelectpickType(0)">选择网格</li>
+                    <!-- <li onclick="setSelectpickType(2)">选择点</li> -->
+                    <li onclick="setSelectpickType(1)">选择三角</li>
+                </ul>
+            </li>
+            <!--<li>
+                <a>变换</a>
+                <ul class="second-nav">
+                    <li>
+                        <a>削切网格</a>
+                        <!-- <ul class="third-nav">
+                            <li>立方体</li>
+                            <li>球体</li>
+                            <li>圆柱体</li>
+                        </ul>
+                    </li>
+                    <li>融合网格</li>
+                    <!-- <li>缩放</li>
+                    <li>位移</li>
+                    <li>旋转</li>
+                </ul>
+            </li>-->
+        </ul>
+    </div>
+    <!--导航条结束-->
+    <canvas id="renderCanvas" style="width: 85%;height: 95%;float: left;margin-top: 0px;top:40px;left: 0px;position: absolute;"></canvas>
+
+    <div class="right-panel">
+        <div id="mesh_box" class="mesh-box">
+            <div class="row" style="border-bottom: 1px outset #e4e3e3">
+                <div style="text-align: center;">网格</div>
+            </div>
+            <div>
+                <div class="row">
+                    <span class="span">ID:</span>
+                    <input type="text" name="" id="mesh_id" class="text-input" />
+                </div>
+                <div class="row">
+                    <span class="span">材质：</span>
+                    <select id="mesh_material" onchange="changeMeshMaterial(this.value)" onfocus="createMeshMaterialOptions(this)" class="text-value">
+                        
+                    </select>
+                </div>
+                <!-- <div class="row">
+                    <span class="span">启用：</span>
+                    <select id="mesh_isEnabled" onchange="changeMeshIsEnabled(this.value)">
+                        <option value="true" selected="selected">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <span class="span">可见性</span>
+                    <select id="mesh_visible" onchange="changeMeshIsVisible(this.value)">
+                        <option value="true" selected="selected">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <span class="span">父类:</span>
+                    <select id="mesh_parent" onchange="changeMeshParent(this.value)" onfocus="createMeshParentOptions(this)" class="text-value">
+                        
+                    </select>
+                </div> -->
+
+                <div class="panel-transform">
+                    <div class="first-row">形态：</div>
+                    <div class="hidden-row">
+                        <div class="second-row1"><span>位置：</span></div>
+                        <div class="second-row2">
+                            <div><span>X:</span><input type="number" name="" value="0" id="mesh_position_x" onchange="updateMeshPositionX(this.value)" /></div>
+                            <div><span>Y:</span><input type="number" name="" value="0" id="mesh_position_y" onchange="updateMeshPositionY(this.value)" /></div>
+                            <div><span>Z:</span><input type="number" name="" value="0" id="mesh_position_z" onchange="updateMeshPositionZ(this.value)" /></div>
+                        </div>
+                        <div class="second-row1"><span>旋转：</span></div>
+                        <div class="second-row2">
+                            <div><span>X:</span><input type="number" min="-2"  max= "2" name="" value="0" id="mesh_rotation_x" onchange="updateMeshRotationX(this.value)" /></div>
+                            <div><span>Y:</span><input type="number" min="-2"  max= "2" name="" value="0" id="mesh_rotation_y" onchange="updateMeshRotationY(this.value)" /></div>
+                            <!-- <div><span>X:</span><input type="number" min="-2"  max= "2" name="" value="0" id="mesh_rotation_x" onchange="select_mesh.rotation.x = this.value" /></div>
+                            <div><span>Y:</span><input type="number" min="-2"  max= "2" name="" value="0" id="mesh_rotation_y" onchange="select_mesh.rotation.y = this.value" /></div> -->
+                            <div><span>Z:</span><input type="number"  min="-2"  max= "2" name="" value="0" id="mesh_rotation_z" onchange="updateMeshRotationZ(this.value)" /></div>
+                            <!-- <div><span>Z:</span><input type="number"  min="-2"  max= "2" name="" value="0" id="mesh_rotation_z" onchange="select_mesh.rotation.z = this.value" /></div> -->
+                        </div>
+                        <div class="second-row1"><span>缩放：</span></div>
+                        <div class="second-row2">
+                            <div><span>X:</span><input type="number" name="" value="0" id="mesh_scaling_x" onchange="updateMeshScalingX(this.value)" /></div>
+                            <div><span>Y:</span><input type="number" name="" value="0" id="mesh_scaling_y" onchange="updateMeshScalingY(this.value)" /></div>
+                            <div><span>Z:</span><input type="number" name="" value="0" id="mesh_scaling_z" onchange="updateMeshScalingZ(this.value)" /></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <span class="span">锁定：</span>
+                    <select id="mesh_pickable" onchange="changeMeshPickable(this.value)">
+                        <option value="true" selected="selected">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div> -->
+                <div id="" class="row">
+                    <span class="span">环境：</span>
+                    <input type="text" id="mesh_material_ambient_color" value="rgb(255,255,255)" class="text-input" />
+                </div>
+                <div id="" class="row">
+                    <span class="span">扩散：</span>
+                    <input type="text" id="mesh_material_diffuse_color" value="rgb(255,255,255)" class="text-input" />
+                </div>
+                <div id="" class="row">
+                    <span class="span">镜面:</span>
+                    <input type="text" id="mesh_material_specular_color" value="rgb(255,255,255)" class="text-input" />
+                </div>
+                <div class="row">
+                    <span class="span">发光：</span>
+                    <input type="text" id="mesh_material_emissive_color" name="" value="rgb(255,255,255)" class="text-input" />
+                </div>
+            </div>
+        </div>
+        <div class="materials-textures-collection">
+            <div class="menu-list">
+                <div class="menu-material" onclick="displayMaterialCollection()">材质库</div>
+                <div class="menu-texture" onclick="displayTextureCollection()" >纹理库</div>
+            </div>
+            <div class="material-content" id="material_content">
+                <div id="materials_collection_div" class="material-collection-div">
+                    <div class="material-collection-row">
+                        <div class="material-title">text</div>
+                        <div class="material-edit">编辑</div>
+                        <div class="material-del">删除</div>
+                    </div>
+                </div>
+            </div>
+            <div class="texture-content" id="texture_content">
+                <div id="textures_collection_div" class="textures-collection-div">
+                    <div class="textures-collection-row">
+                        <div class="texture-image-div"><image alt="暂无图像"></image></div>
+                        <div class="texture-option-div">
+                            <div class="texture-edit">编辑</div>
+                            <div class="texture-del">删除</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <div style="position: absolute;top: 70px;left:40px;z-index: 9;color:#292929">鼠标位置:<label id="clientX">X:0px</label>&thinsp;&thinsp;&thinsp;<label id="clientY">Y:0px</label></div>
+    <div style="position: absolute;top:70px;left:240px;z-index: 9;color:#292929">选择：<label id="select_options">mesh</label></div>
+    <div style="position: absolute;top: 70px;left:340px;z-index: 9;">
+        <i class="material-icons" style="color:#C4C4C4;" id="go_back_history" onclick="popBackHistory()">fast_rewind</i>
+    </div>
+    <div style="position: absolute;top: 70px;left:400px;z-index: 9;">
+        <i class="material-icons" style="color:#C4C4C4;" id="cancel_history" onclick="popUndoHistory()">fast_forward</i>
+    </div>
+    <div style="position: absolute;top: 70px;left:450px;z-index: 9;">
+        <i class="material-icons" style="color:#C4C4C4;" id="mesh_lock">lock_open</i>
+    </div>
+    <div style="position: absolute;top: 250px;left:100px;z-index: 9;">
+        <i class="material-icons" style="color:#292929;" id="zoom_in_camera_radius">zoom_in</i>
+    </div>
+    <div style="position: absolute;top: 300px;left:100px;z-index: 9;">
+        <i class="material-icons" style="color:#292929;" id="zoom_out_camera_radius">zoom_out</i>
+    </div>
+    <div style="position: absolute;top: 350px;left:100px;z-index: 9;">
+        <i class="material-icons" style="color:#C4C4C4;" id="mesh_delete">delete</i>
+    </div>
+    <!--<div style="position: absolute;top: 400px;left:100px;z-index: 9;">
+        <i class="material-icons" style="color:#C4C4C4;" id="mesh_visibility">visibility</i>
+    </div>-->
+    <canvas id="view_canvas" style="width:8%;height:15%;z-index:9;position:absolute;top:90px;right:250px;"></canvas>
+    <!-----------------------------------------------Material Panel-------------------------------------------------------------------->
+    <div class="material-box" id="material_box" draggable="true" style="position: absolute;display: none;">
+        <div class="material-title" id="material_title">material</div>
+        <div id="material_panel" class="material-panel">
+            <div class="material-div" style="padding-top: 5px;">
+                <span class="material-span">ID:</span>
+                <input type="text" id="material_id" class="material-input" autofocus onblur="IsEmpty(this)" />
+            </div>
+            <div class="material-div">
+                <span class="material-span">名称：</span>
+                <input type="text" name="" id="material_name" class="material-input" onblur="IsEmpty(this)">
+            </div>
+            <div class="material-div">
+                <span class="material-span">深度纹理:</span>
+                <select id="material_depthwrite" class="material-select">
+                    <option value="true" selected="selected">true</option>
+                    <option value="false" >false</option>
+                </select>
+            </div>
+            <div id="ambient_color" class="material-div">
+                <span class="material-span">环境颜色：</span>
+                <input type="text" id="ambient_color_label"  class="material-input" />
+            </div>
+            <div id="diffuse_color" class="material-div">
+                <span class="material-span">扩散颜色：</span>
+                <input type="text" id="diffuse_color_label"  class="material-input" />
+            </div>
+            <div id="specular_color" class="material-div">
+                <span class="material-span">镜面颜色:</span>
+                <input type="text" id="specular_color_label" class="material-input" />
+            </div>
+            <div class="material-div">
+                <span class="material-span">镜面强度:</span>
+                <input id="material_specular_power" type="number" placeholder="float" class="material-input" />
+            </div>
+            <div id="emissive_color" class="material-div">
+                <span class="material-span">发光颜色：</span>
+                <input type="text" id="emissive_color_label" name="" class="material-input" />
+            </div>
+            <div class="material-div">
+                <span class="material-span">透明度:</span>
+                <input type="number" id="material_alpha" placeholder="float" class="material-input" />
+            </div>
+            <div class="material-div">
+                <span class="material-span">线框：</span>
+                <select id="material_wireframe" class="material-select" value='false'>
+                    <option value="true">true</option>
+                    <option value="false" selected="selected">false</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">背面剔除：</span>
+                <select id="material_backfaceCulling" class="material-select" value='false'>
+                    <option value="true">true</option>
+                    <option value="false" selected="selected">false</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">折射率:</span>
+                <input type="number" id="material_index_of_refraction" class="material-input" placeholder="float" />
+            </div>
+            <!--<div class="material-div">
+                <span class="material-span">光阴影地图:</span>
+                <select id="material_shadowmap" class="material-select" value='false'>
+                    <option value="true">true</option>
+                    <option value="false" selected="selected">false</option>
+                </select>
+            </div>-->
+            <div class="material-div">
+                <span class="material-span">漫反射：</span>
+                <select type="text" name="" id="material_diffuse" list="texture_list" class="material-input" onfocus="materialTextureDatalist(this)">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">镜面反色：</span>
+                <select type="text" name="" id="material_specular" class="material-input" onfocus="materialTextureDatalist(this)">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <sapn class="material-span">放射性：</sapn>
+                <select type="text" name="" id="material_emissive" class="material-input" onfocus="materialTextureDatalist(this)">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">环境:</span>
+                <select type="text" name="" id="material_ambient" class="material-input" onfocus="materialTextureDatalist(this)">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">不透明:</span>
+                <select id="material_opacity" class="material-input" onfocus="materialTextureDatalist(this)">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">折光:</span>
+                <select id="material_refraction" class="material-input" onfocus="materialTextureDatalist(this)">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">凹凸:</span>
+                <select id="material_bump" class="material-input" onfocus="materialTextureDatalist(this)">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <span class="material-span">光映射:</span>
+                <select onfocus="materialTextureDatalist(this)" id="material_lightmap" class="material-input">
+                    <option selected="selected">null</option>
+                </select>
+            </div>
+            <div class="material-div">
+                <button onclick="createMaterial()">确定</button><button onclick="closeMaterialPanel()">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------------------------texture Panel----------------------------------------------->
+
+    <div id="texture_panel" class="texture_panel" style="position: absolute;display: none;">
+        <div id="texture_table">
+            <table>
+                <caption>纹理属性面板</caption>
+                <tbody>
+                    <tr>
+                        <td><span class="texture-span">文件名：</span></td>
+                        <td colspan="3"><input type="file" style="width: 100px" id="texture_name" name="picture" accept="image/jpg,imgae/png"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="texture-span">level:</span></td>
+                        <td><input type="number" class="texture-input" name="texture_level" id="texture_level" value="1" /></td>
+                    </tr>
+                    <tr>
+                        <td><span class="texture-span">HasAlpha:</span></td>
+                        <td>
+                            <select id="texture_hasAlpha">
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="texture-span">坐标模式</span></td>
+                        <td>
+                            <select id="texture_mode">
+                                <option value="0">显性</option>
+                                <option value="1">球形</option>
+                                <option value="2" selected="selected">平面</option>
+                                <option value="3">立体</option>
+                                <option value="4">投影</option>
+                                <option value="5">天空盒</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><span class="texture-span">Offset:(U,V)</span></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_uOffset" id="texture_uOffset" value="0" /></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_vOffset" id="texture_vOffset" value="0" /></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="texture-span">Scale(U,V)</span></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_uScale" id="texture_uScale" value="5" /></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_vScale" id="texture_vScale" value="5" /></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="texture-span">Ang(U,V,W):</span></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_uAng" id="texture_uAng" value="0"></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_vAng" id="texture_vAng" value="0"></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_wAng" id="texture_wAng" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td><span class="texture-span">Wrap(r,u,v):</span></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_uWrap" id="texture_rWrap" value="1"></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_uWrap" id="texture_uWrap" value="1"></td>
+                        <td><span></span><input type="number" class="texture-input" name="texture_vWrap" id="texture_vWrap" value="1"></td>
+                    </tr>
+                    <!--<tr>
+                    <td><span class="texture-span">坐标指数</span></td>
+                    <td><input type="number" name="tetxure_index" id="tetxure_index" class="texture-input" /></td>
+                    <td></td>
+                    <td></td>
+                </tr>-->
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button onclick="uploadTexturePicture()">确定</button>
+                        </td>
+                        <td>
+                            <button onclick="showAndCloseTexturePanel()">取消</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-------------------   各种提示对话框-------------------->
+    <div id="empty_id_dialog" style="display:none;">
+        <p>名称不能空或格式不符合要求！</p>
+    </div>
+    <div id="error_filetype_dialog" style="display:none;">
+        <p>文件格式错误</p>
+    </div>
+    <div id="no_select_mesh_dialog" style="display:none;">
+        <p>未选择网格</p>
+    </div>
+    <div id="save_mesh_dialog" style="display:none;">
+        <p>保存网格</p>
+    </div>
+    <div id="create_material_success" style="display:none;">
+        <p>材质创建成功！</p>
+    </div>
+    <div id="create_material_fail" style="display: none">
+        <p>材质创建失败</p>
+    </div>
+    <div id="create_texture_success" style="display: none">
+        <p>纹理创建成功</p>
+    </div>
+    <div id="create_texture_fail" style="display: none">
+        <p>纹理创建失败</p>
+    </div>
+    <div id="delete_texture_success" style="display: none">
+        <p>删除纹理图片成功!</p>
+    </div>
+    <div id="delete_texture_fail" style="display: none">
+        <p>删除纹理图片失败</p>
+    </div>
+    <div id="delete_material_success" style="display: none">
+        <p>删除材质对象成功</p>
+    </div>
+    <div id="delete_material_fail" style="display: none;">
+        <p>删除材质对象失败</p>
+    </div>
+    <div id="save_scene_dialog_success" style="display:none;">
+        <p>保存场景成功！</p>
+    </div>
+    <div id="save_scene_dialog_fail" style="display:none;">
+        <p>保存场景失败！</p>
+    </div>
+    <div id="right_mouse_menu" style="display:none;width:150px;background-color:#E0EEEE;">
+        <ul style="list-style:none;padding-left:20px;">
+            <li onclick="setMeshMove()">移动(w)</li>
+            <li onclick="setMeshRotate()">旋转(e)</li>
+            <li onclick="setMeshScale()">缩放(r)</li>
+            <li onclick="addMeshTexture()">添加材质</li>
+            <li onclick="setUnionMesh()">融合网格</li>
+            <li onclick="setSubtractMesh()">削切网格</li>
+            <li onclick="addMeshMaterial()">添加纹理</li>
+            <li onclick="meshVertexData()">可编辑点</li>
+            <li onclick="">保存</li>
+            <li onclick="exitIndexPage()">返回主页</li>
+        </ul>
+    </div>
+    <div id="system_meshes_dialog" title="模型库" style="position:absolute;top:300px;left:400px;display:none;">
+        <table id="meshes_table" align="center">
+            <tr>
+                <td><img src="../system/images/car0.jpg" id="car0.STL" style="width:120px;height:100px;" alt="暂无图片" ondblclick="importMeshToScene(this)" /></td>
+                <td><img src="../system/images/car1.jpg" id="car1.STL" style="width:120px;height:100px;" alt="暂无图片" ondblclick="importMeshToScene(this)" /></td>
+            </tr>
+            <tr>
+                <td><img src="../system/images/car2.jpg" id="car2.STL" style="width:120px;height:100px;" alt="暂无图片" ondblclick="importMeshToScene(this)" /></td>
+                <!-- <td><img src="../system/images/animal1.jpg" id="animal1.STL" style="width:120px;height:100px;" alt="暂无图片" ondblclick="importMeshToScene(this)" /></td> -->
+                <td><img src="../system/images/figure1.jpg" id="figure1.obj" style="width:120px;height:100px;" alt="暂无图片" ondblclick="importMeshToScene(this)" /></td>
+            </tr>
+            <!-- <tr>
+                
+                <td><img src="../system/images/figure2.jpg" id="figure2.obj" style="width:120px;height:100px;" alt="暂无图片" ondblclick="importMeshToScene(this)" /></td>
+            </tr> -->
+        </table>
+       
+    </div> 
+    
+    <script src='../javascripts/users/views/meshView.js'></script>
+    <script src="../javascripts/users/views/mouseView.js"></script>
+    <script src="../javascripts/users/controls/second_scene.js"></script>
+    <script src="../javascripts/users/controls/scene.js"></script>
+
+    <script src="../javascripts/users/controls/selectReact.js"></script>
+    <script src="../javascripts/users/controls/control.js"></script>
+    <script src='../javascripts/users/controls/file.js'></script>
+    <script src='../javascripts/users/controls/mesh.js'></script>
+    <script src="../javascripts/users/controls/trangle.js"></script>
+
+    <script src="../javascripts/users/views/materialView.js"></script>
+    <script src="../javascripts/users/views/textureView.js"></script>
+    <script src="../javascripts/users/controls/file.js"></script>
+    <script src="../javascripts/users/controls/texture.js"></script>
+    <script src="../javascripts/users/controls/mouseEvent.js"></script>
+    <script src="../javascripts/users/controls/keyEvent.js"></script>
+</body>
+</html>
+<script>
+    //页面初始化
+    window.onload = function(){
+        //1.解析获取地址栏参数的方法
+        document.oncontextmenu = function (e) {
+                e.preventDefault(e);
+        };
+        let user_id = $.cookie("userid");
+        let project_name = $.cookie("projectname");
+        let is_new = $.cookie("options");
+        if(is_new =='new'){
+            //不需要加载文件
+        }else{
+            //加载模型文件
+            //let file_path = "../users/"+user_id+"/"+project_name+"/scenes/";
+            let file_path = "../users/"+user_id+"/"+project_name+"/";
+            let file_name = project_name+'.babylon';
+            console.log("加载模型文件");
+            loadImportMeshFile(file_path,file_name);
+            //loadImportMeshes(file_path,file_name);
+           // _createsixCylinder();
+        }
+        disabledCurrentMeshPanel();
+        init();
+    };
+    function getQueryString(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var user_id = window.location.search.substr(1).match(reg);
+        if(user_id!=null)
+            return unescape(user_id[2]);
+        return null;
+    }
+    //obj文件导入
+    /*function objFileLoader(){
+        //1.UV问题
+        BABYLON.OBJFileLoader.OPTIMIZE_WITH_UV = true;
+        //2.纹理变形或倒置
+        //BABYLON.OBJFileLoader.UV_SCALE = new BABYLON.Vector2(xValue, yValue);
+        //3.顶点颜色
+        BABYLON.OBJFileLoader.IMPORT_VERTEX_COLORS = true;
+        //4在y轴上反转导入的模型
+        BABYLON.OBJFileLoader.INVERT_Y = true;
+        //5.在y轴上反转导入的纹理
+        BABYLON.OBJFileLoader.INVERT_TEXTURE_Y = true;
+        //6.无法加载MTL文件,
+        //将以静默方式失败。该模型仍将被加载，但是如果您要强制更严格地加载材料，则可以相应地使用onSuccess（）和onError（）回调
+        BABYLON.OBJFileLoader.MATERIAL_LOADING_FAILS_SILENTLY = false;
+        //7.忽略MTL
+        BABYLON.OBJFileLoader.SKIP_MATERIALS = true;
+    }*/
+</script>

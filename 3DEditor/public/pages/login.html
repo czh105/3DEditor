@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <title>用户登录</title>
+    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles." />
+    <meta name="author" content="Vincent Garreau" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../stylesheets/login.css" />   
+    <script src="../javascripts/assets/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div class="login-table">
+        <form action="http://127.0.0.1:8080/loginIn" method="post" onsubmit=" return check()">
+            <div class="login-title">登录界面</div>
+            <div>
+                <div class="login-div">
+                    <img src="../images/picture/name.png" alt="error" class="login-img" />
+                    <input type="tel" name="user_id" placeholder="账号" style="height: 25px;margin-left:5px;" οnkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" autofocus="autofocus" />
+                </div>
+                <div class="login-div">
+                    <img src="../images/picture/password.png" alt="error" class="login-img" />
+                    <input type="password" name="user_pwd" placeholder="密码" οnkeyup="value=value.replace(/[\W]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" style="height: 25px;margin-left:5px;" />
+                </div>
+                <div class="login-div">
+                    <input type="submit" value="登录" class="login-submit" />
+                    <input type="button" value="忘记密码" class="login-for-pwd" />
+                </div>
+            </div>
+        </form>
+        <a href="/pages/register.html">注册新用户</a>
+    </div>
+    <script>
+        /*function register() {
+            console.log("页面跳转");
+            $.ajax({
+                type: 'post',
+                url: 'http://127.0.0.1:8080/register',
+                data: null,
+                success: function (data) {
+                    //window.location.href = 'public/pages/home.html';
+                },
+                error: function (err) {
+                    console.error(err);
+                },
+            });
+
+        }*/
+        //判断是否输入为空
+        function check() {
+            var user_id = $("input[name='user_id']").val();
+            var user_pwd = $("input[name='user_pwd]'").val();
+            if (user_id == '' || user_id.length == 0 || user_pwd == '' || user_id.legth == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        //判断输入账号是否正确
+        $("input[name='user_id']").focus(function () {
+           $(this).css('background-color','white');
+
+        });
+    //
+    $("input[name='user_id']").blur(function () {
+        let user_id = $(this).val();
+
+        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(user_id)) && user_id.length < 11){
+            //alert("手机号码有误，请重填");
+            console.log("panduan");
+            $(this).css('background-color','red');
+        }
+        else{
+            $(this).css('background-color','white');
+        }
+    });
+    </script>
+</body>
+</html>
